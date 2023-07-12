@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Domain.Entities;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Common
 {
@@ -11,5 +13,9 @@ namespace Domain.Common
         public DateTime? UpdatedDate { get; set; }
         public int? UpdatedUserId { get; set; }
         public bool IsDeleted { get; set; } = false;
+        [ForeignKey("CreatedUserId")]
+        public virtual User CreatedUser { get; set; }
+        [ForeignKey("UpdatedUserId")]
+        public virtual User UpdatedUser { get; set; }
     }
 }
