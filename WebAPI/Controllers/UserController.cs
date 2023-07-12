@@ -2,10 +2,13 @@
 using Application.Features.Users.Command.Update;
 using Application.Features.Users.Query.GetAll;
 using Application.Features.Users.Query.GetById;
+using Application.Features.Users.Query.Login;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+    [Authorize]
     public class UserController : ApiControllerBase
     {
         [HttpPost("Add")]
@@ -27,7 +30,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("GetById")]
-        public async Task<IActionResult> GetById(UsersGetByIdQuery query)
+        public async Task<IActionResult> GetByIdAsync(UsersGetByIdQuery query)
+        {
+            return Ok(await Mediator.Send(query));
+        }
+
+        [AllowAnonymous]
+        [HttpPost("Login")]
+        public async Task<IActionResult> LoginAsync(UsersLoginQuery query)
         {
             return Ok(await Mediator.Send(query));
         }

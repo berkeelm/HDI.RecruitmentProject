@@ -1,9 +1,8 @@
 ﻿using Application.Common.Interfaces;
-using Application.Features.Users.Query.GetAll;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Addresses.Query.GetAll
+namespace Application.Features.Users.Query.GetAll
 {
     public class UsersGetAllQueryHandler : IRequestHandler<UsersGetAllQuery, List<UsersGetAllDto>>
     {

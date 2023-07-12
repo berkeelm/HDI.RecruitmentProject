@@ -2,6 +2,7 @@
 using Domain.Common;
 using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Users.Command.Update
@@ -9,10 +10,12 @@ namespace Application.Features.Users.Command.Update
     public class UserUpdateCommandHandler : IRequestHandler<UserUpdateCommand, Response<bool>>
     {
         private readonly IHDIContext _HDIContext;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserUpdateCommandHandler(IHDIContext HDIContext)
+        public UserUpdateCommandHandler(IHDIContext HDIContext, IHttpContextAccessor httpContextAccessor)
         {
             _HDIContext = HDIContext;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<Response<bool>> Handle(UserUpdateCommand request, CancellationToken cancellationToken)
@@ -26,7 +29,7 @@ namespace Application.Features.Users.Command.Update
             user.Email = request.Email;
             user.Username = request.Username;
             user.UserType = request.UserType;
-            user.UpdatedUserId = 123;
+            user.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
             user.UpdatedDate = DateTime.Now;
 
             int numberOfUpdated = await _HDIContext.SaveChangesAsync(cancellationToken);

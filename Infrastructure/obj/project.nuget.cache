@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QqH9wSg2SDt1AyL1OMb94WXPNz7KrJm1Eubw3LATcUT78aRsFUxytBszF371tsax0uuq/wRMSaqGrHoOmxMqhw==",
+  "dgSpecHash": "K2s8KecmUwEEKPlz6ByIx8ic7JkIXy2v/1mSRDskHOyURfsDync4gJAY8qLOHgPm2MiN7jbSl1mhBmR+LfCLHg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.2\\microsoft.data.sqlclient.5.0.2.nupkg.sha512",

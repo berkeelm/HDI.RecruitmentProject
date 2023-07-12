@@ -1,5 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Infrastructure.Persistence.Contexts;
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +16,7 @@ namespace Infrastructure
             services.AddDbContext<HDIContext>(opt => opt.UseSqlServer(connectionString));
 
             services.AddScoped<IHDIContext>(provider => provider.GetRequiredService<HDIContext>());
-
+            services.AddSingleton<IJwtService, JwtManager>();
             return services;
         }
     }
