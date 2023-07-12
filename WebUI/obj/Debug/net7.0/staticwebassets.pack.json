@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\WebUI.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
       "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

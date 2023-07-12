@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DKoZciIR647xpAiCEAvaQqiA+UZ4yS0oVA678TGL5kc=",
+  "Hash": "pZ3YMUMhA+iXtj2dkcYLMC7iFSC+zpN6/I61KbCc++w=",
   "Source": "WebUI",
   "BasePath": "_content/WebUI",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\WebUI.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\css\\login.css",
+      "SourceId": "WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\",
+      "BasePath": "_content/WebUI",
+      "RelativePath": "css/login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login.css"
     },
     {
       "Identity": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\css\\site.css",

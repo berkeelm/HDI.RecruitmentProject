@@ -10,11 +10,13 @@ namespace Application.Features.Users.Command.Add
     {
         private readonly IHDIContext _HDIContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ICryptographyHelper _cryptographyHelper;
 
-        public UserAddCommandHandler(IHDIContext HDIContext, IHttpContextAccessor httpContextAccessor)
+        public UserAddCommandHandler(IHDIContext HDIContext, IHttpContextAccessor httpContextAccessor, ICryptographyHelper cryptographyHelper)
         {
             _HDIContext = HDIContext;
             _httpContextAccessor = httpContextAccessor;
+            _cryptographyHelper = cryptographyHelper;
         }
 
         public async Task<Response<int>> Handle(UserAddCommand request, CancellationToken cancellationToken)
@@ -26,7 +28,7 @@ namespace Application.Features.Users.Command.Add
                 CreatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"],
                 Email = request.Email,
                 NameSurname = request.NameSurname,
-                Password = request.Password,
+                Password = _cryptographyHelper.ComputeMD5Hash(request.Password),
                 Username = request.Username,
             };
 

@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="~/css/login.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="sidenav">
+     <div class="login-main-text">
+          <h2>HDI Sigorta<br> Recruitment Project</h2>
+          <p>Berke ELMASTAŞ</p>
+     </div>
+</div>
+<div class="main">
+     <div class="col-md-6 col-sm-12">
+          <div class="login-form">
+               <form method="POST" action="@Url.Action("Index", "Login")">
+                    <div class="form-group">
+                         <label>Kullanıcı Adınız</label>
+                         <input value="@ViewBag.LastUsername" name="username" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                         <label>Şifreniz</label>
+                         <input name="password" type="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-black">Login</button>
+
+                @{
+                    if (ViewBag.Error != null)
+                    {
+                            <div class="mt-5 alert alert-danger" role="alert">
+                                 @ViewBag.Error
+                            </div>
+                    }
+                }
+               </form>
+          </div>
+     </div>
+</div>

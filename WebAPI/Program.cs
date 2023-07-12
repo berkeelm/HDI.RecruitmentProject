@@ -1,4 +1,6 @@
 using Application;
+using Application.Common.Helpers;
+using Application.Common.Interfaces;
 using Domain.Settings;
 using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -68,6 +70,8 @@ builder.Services.AddAuthentication(options =>
                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:SecretKey"]))
            };
        });
+
+builder.Services.AddScoped<ICryptographyHelper, CryptographyHelper>();
 
 var app = builder.Build();
 

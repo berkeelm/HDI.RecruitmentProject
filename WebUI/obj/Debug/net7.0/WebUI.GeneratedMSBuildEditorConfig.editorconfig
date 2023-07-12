@@ -12,7 +12,7 @@ build_property.RootNamespace = WebUI
 build_property.ProjectDir = C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebUI\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebUI
 build_property._RazorSourceGeneratorDebug = 
 
@@ -22,6 +22,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/Shared/Error.cshtml]
