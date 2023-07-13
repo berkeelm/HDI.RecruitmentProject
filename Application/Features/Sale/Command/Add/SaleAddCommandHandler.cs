@@ -27,6 +27,7 @@ namespace Application.Features.Sale.Command.Add
                 ProductId = request.ProductId,
                 CreatedDate = DateTime.Now,
                 CreatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"],
+                RepairChangeCenterUserId = request.RepairChangeCenterUserId,
             };
 
             await _HDIContext.Sale.AddAsync(Sale, cancellationToken);

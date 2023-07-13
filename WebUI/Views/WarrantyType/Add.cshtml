@@ -1,0 +1,20 @@
+﻿@model Application.Features.WarrantyType.Command.Add.WarrantyTypeAddCommand
+
+@{
+    ViewData["Title"] = "Garanti Tipi Ekle";
+}
+
+<form method="POST" action="@Url.Action("Add", "WarrantyType")" enctype="multipart/form-data">
+     <div class="row">
+          <div class="col-md-6 form-group">
+               <label>Garanti Tipi Adı</label>
+            @Html.TextBoxFor(x=>x.Name, new {@class="form-control", required=true})
+          </div>
+     </div>
+
+     <div class="mt-3 row">
+          <div class="col-md-12">
+               <button type="submit" class="btn btn-primary">Kaydet</button>
+          </div>
+     </div>
+</form>

@@ -9,7 +9,6 @@ namespace Domain.Entities
 {
     public class Customer : EntityBase
     {
-        public int Id { get; set; }
         public string NameSurname { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }

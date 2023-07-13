@@ -17,6 +17,11 @@ namespace Application.Features.User.Query.GetAll
         {
             var dbQuery = _HDIContext.User.Include(x => x.CreatedUser).Include(x => x.UpdatedUser).Where(x => !x.IsDeleted);
 
+            if (request.UserType.HasValue)
+            {
+                dbQuery = dbQuery.Where(x => x.UserType == request.UserType);
+            }
+
             var users = await dbQuery.ToListAsync(cancellationToken);
 
             var usersDto = users.Select(x => new UserGetAllDto()

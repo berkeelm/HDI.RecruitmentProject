@@ -28,6 +28,7 @@ namespace Application.Features.Sale.Command.Update
             Sale.CustomerId = request.CustomerId;
             Sale.ProductId = request.ProductId;
             Sale.Price = request.Price;
+            Sale.RepairChangeCenterUserId = request.RepairChangeCenterUserId;
             Sale.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
             Sale.UpdatedDate = DateTime.Now;
 

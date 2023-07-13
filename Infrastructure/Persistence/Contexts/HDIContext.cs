@@ -20,6 +20,7 @@ namespace Infrastructure.Persistence.Contexts
         public DbSet<Product> Product { get; set; }
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Sale> Sale { get; set; }
+        public DbSet<WarrantyType> WarrantyType { get; set; }
 
         public HDIContext(DbContextOptions<HDIContext> options) : base(options)
         {

@@ -13,6 +13,8 @@ namespace Application.Features.Sale.Query.GetById
         public string Product { get; set; }
         public int CustomerId { get; set; }
         public string Customer { get; set; }
+        public int RepairChangeCenterUserId { get; set; }
+        public string RepairChangeCenterUser { get; set; }
         public decimal Price { get; set; }
         public string PhotoPath { get; set; }
         public DateTime CreatedDate { get; set; }

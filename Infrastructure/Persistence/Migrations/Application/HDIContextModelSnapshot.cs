@@ -143,6 +143,9 @@ namespace Infrastructure.Persistence.Migrations.Application
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<int>("RepairChangeCenterUserId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
@@ -156,6 +159,8 @@ namespace Infrastructure.Persistence.Migrations.Application
                     b.HasIndex("CustomerId");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("RepairChangeCenterUserId");
 
                     b.HasIndex("UpdatedUserId");
 
@@ -213,6 +218,42 @@ namespace Infrastructure.Persistence.Migrations.Application
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("Domain.Entities.WarrantyType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedUserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UpdatedUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedUserId");
+
+                    b.HasIndex("UpdatedUserId");
+
+                    b.ToTable("WarrantyType");
+                });
+
             modelBuilder.Entity("Domain.Entities.Customer", b =>
                 {
                     b.HasOne("Domain.Entities.User", "CreatedUser")
@@ -261,6 +302,12 @@ namespace Infrastructure.Persistence.Migrations.Application
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Domain.Entities.User", "RepairChangeCenterUser")
+                        .WithMany()
+                        .HasForeignKey("RepairChangeCenterUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Domain.Entities.User", "UpdatedUser")
                         .WithMany()
                         .HasForeignKey("UpdatedUserId");
@@ -271,10 +318,27 @@ namespace Infrastructure.Persistence.Migrations.Application
 
                     b.Navigation("Product");
 
+                    b.Navigation("RepairChangeCenterUser");
+
                     b.Navigation("UpdatedUser");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
+                {
+                    b.HasOne("Domain.Entities.User", "CreatedUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedUserId");
+
+                    b.HasOne("Domain.Entities.User", "UpdatedUser")
+                        .WithMany()
+                        .HasForeignKey("UpdatedUserId");
+
+                    b.Navigation("CreatedUser");
+
+                    b.Navigation("UpdatedUser");
+                });
+
+            modelBuilder.Entity("Domain.Entities.WarrantyType", b =>
                 {
                     b.HasOne("Domain.Entities.User", "CreatedUser")
                         .WithMany()

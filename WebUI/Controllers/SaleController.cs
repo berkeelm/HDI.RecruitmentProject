@@ -6,7 +6,9 @@ using Application.Features.Sale.Command.Delete;
 using Application.Features.Sale.Command.Update;
 using Application.Features.Sale.Query.GetAll;
 using Application.Features.Sale.Query.GetById;
+using Application.Features.User.Query.GetAll;
 using Domain.Common;
+using Domain.Enums;
 using Microsoft.AspNetCore.Mvc;
 using WebUI.Interfaces;
 using WebUI.Models.ViewModels;
@@ -31,11 +33,13 @@ namespace WebUI.Controllers
         {
             var productList = _requestHelper.SendRequest<List<ProductGetAllDto>>("/Product/GetAll", new ProductGetAllQuery());
             var customerList = _requestHelper.SendRequest<List<CustomerGetAllDto>>("/Customer/GetAll", new CustomerGetAllQuery());
+            var userList = _requestHelper.SendRequest<List<UserGetAllDto>>("/User/GetAll", new UserGetAllQuery(UserType.RepairChangeCenterUser));
 
             var viewModel = new AddSaleViewModel()
             {
                 CustomerList = customerList,
                 ProductList = productList,
+                UserList = userList
             };
 
             return View(viewModel);

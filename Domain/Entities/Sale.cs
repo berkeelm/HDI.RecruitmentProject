@@ -9,11 +9,12 @@ namespace Domain.Entities
 {
     public class Sale : EntityBase
     {
-        public int Id { get; set; }
         public int CustomerId { get; set; }
         public virtual Customer Customer { get; set; }
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
         public decimal Price { get; set; }
+        public int RepairChangeCenterUserId { get; set; }
+        public virtual User RepairChangeCenterUser { get; set; }
     }
 }

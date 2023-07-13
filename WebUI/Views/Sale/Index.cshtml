@@ -10,6 +10,7 @@
                <th>Resim</th>
                <th>Ürün</th>
                <th>Müşteri</th>
+               <th>Değişim & Tamir Merkezi</th>
                <th>Fiyat</th>
                <th>Oluşturulma Tarihi</th>
                <th>Oluşturan Kullanıcı</th>
@@ -27,6 +28,7 @@
                        <td><img class="img img-thumbnail" style="max-width: 100px" src="~/uploads/@item.PhotoPath" /></td>
                        <td>@item.Product</td>
                        <td>@item.Customer</td>
+                       <td>@item.RepairChangeCenterUser</td>
                        <td>@item.Price</td>
                        <td>@item.CreatedDate.ToString("dd.MM.yyyy HH:mm")</td>
                        <td>@item.CreatedUser</td>

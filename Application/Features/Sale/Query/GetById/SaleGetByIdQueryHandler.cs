@@ -20,7 +20,7 @@ namespace Application.Features.Sale.Query.GetById
         {
             var currentUser = _HDIContext.User.FirstOrDefault(x => x.Id == (int)_httpContextAccessor.HttpContext.Items["User"]);
 
-            var dbQuery = _HDIContext.Sale.Include(x => x.CreatedUser).Include(x => x.UpdatedUser).Where(x => x.Id == request.SaleId && !x.IsDeleted);
+            var dbQuery = _HDIContext.Sale.Include(x => x.CreatedUser).Include(x => x.UpdatedUser).Include(x => x.Product).Include(x => x.Customer).Include(x => x.RepairChangeCenterUser).Where(x => x.Id == request.SaleId && !x.IsDeleted);
 
             // Eğer bayi login oluyorsa sadece kendi satışlarını görür
 
@@ -46,7 +46,9 @@ namespace Application.Features.Sale.Query.GetById
                 Price = Sale.Price,
                 Product = Sale.Product.Name,
                 ProductId = Sale.ProductId,
-                PhotoPath = Sale.Product.PhotoPath
+                PhotoPath = Sale.Product.PhotoPath,
+                RepairChangeCenterUser = Sale.RepairChangeCenterUser.NameSurname,
+                RepairChangeCenterUserId = Sale.RepairChangeCenterUserId,
             };
 
             return SaleDto;

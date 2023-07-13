@@ -9,5 +9,6 @@ namespace Application.Features.Sale.Command.Add
         public int CustomerId { get; set; }
         public int ProductId { get; set; }
         public decimal Price { get; set; }
+        public int RepairChangeCenterUserId { get; set; }
     }
 }
