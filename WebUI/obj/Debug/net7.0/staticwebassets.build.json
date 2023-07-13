@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hIz1mmluRF0bTZ2Tm8YFYtRletDN42tOuKvRo4GqkPY=",
+  "Hash": "CqeQXFger2SfbxXbe5uRxgHy4U1WqKPts2LbxwTE3SY=",
   "Source": "WebUI",
   "BasePath": "_content/WebUI",
   "Mode": "Default",
@@ -1154,6 +1154,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\6699ba6e-1a52-43a6-bbd7-c5393a3d25c2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\7ed16729-014e-4056-aaaa-65915b79839d.jpg",
+      "SourceId": "WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\",
+      "BasePath": "_content/WebUI",
+      "RelativePath": "uploads/7ed16729-014e-4056-aaaa-65915b79839d.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\7ed16729-014e-4056-aaaa-65915b79839d.jpg"
     },
     {
       "Identity": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\9d28b6cc-1290-4342-a5bc-3e23cc3c925d.jpg",
