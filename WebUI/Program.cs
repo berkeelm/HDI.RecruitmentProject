@@ -1,7 +1,15 @@
+using Application.Common.Helpers;
+using Application.Common.Interfaces;
+using WebUI.Helpers;
+using WebUI.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IRequestHelper, RequestHelper>();
 
 var app = builder.Build();
 

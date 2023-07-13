@@ -1,27 +1,31 @@
 ﻿using Application.Features.Users.Query.Login;
 using Microsoft.AspNetCore.Mvc;
 using WebUI.Helpers;
+using WebUI.Interfaces;
 
 namespace WebUI.Controllers
 {
     public class LoginController : BaseController
     {
+        public LoginController(IRequestHelper requestHelper) : base(requestHelper)
+        {
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View(new UsersLoginQuery());
         }
 
         [HttpPost]
-        public IActionResult Index(string username, string password)
+        public IActionResult Index(UsersLoginQuery model)
         {
-            var response = RequestHelper.SendRequest<UsersLoginDto>("/User/Login", new UsersLoginQuery(username, password));
+            var response = _requestHelper.SendRequest<UsersLoginDto>("/User/Login", model);
 
             if (response == null)
             {
-                ViewBag.LastUsername = username;
-                ViewBag.Error = "Kullanıcı adınız veya şifreniz yanlış!";
-                return View();
+                TempData["ErrorMessage"] = "Kullanıcı adınız veya şifreniz yanlış!";
+                return View(model);
             }
 
             CookieOptions options = new CookieOptions();

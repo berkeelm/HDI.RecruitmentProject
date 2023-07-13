@@ -1,4 +1,5 @@
 ﻿using Application.Features.Users.Command.Add;
+using Application.Features.Users.Command.Delete;
 using Application.Features.Users.Command.Update;
 using Application.Features.Users.Query.GetAll;
 using Application.Features.Users.Query.GetById;
@@ -19,6 +20,12 @@ namespace WebAPI.Controllers
 
         [HttpPost("Update")]
         public async Task<IActionResult> UpdateAsync(UserUpdateCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
+        [HttpPost("Delete")]
+        public async Task<IActionResult> DeleteAsync(UserDeleteCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

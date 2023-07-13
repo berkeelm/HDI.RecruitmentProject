@@ -20,6 +20,16 @@ namespace Application.Features.Users.Command.Update
 
         public async Task<Response<bool>> Handle(UserUpdateCommand request, CancellationToken cancellationToken)
         {
+            var control = await _HDIContext.User.FirstOrDefaultAsync(x => x.Id != request.UserId && x.Username == request.Username && !x.IsDeleted);
+
+            if (control != null)
+                return new Response<bool>($"Kullanıcı adı kayıtlıdır, lütfen başka bir kullanıcı adı giriniz.", false);
+
+            control = await _HDIContext.User.FirstOrDefaultAsync(x => x.Id != request.UserId && x.Email == request.Email && !x.IsDeleted);
+
+            if (control != null)
+                return new Response<bool>($"Mail adresi kayıtlıdır, lütfen başka bir mail adresi giriniz.", false);
+
             var user = await _HDIContext.User.FirstOrDefaultAsync(x => x.Id == request.UserId && !x.IsDeleted);
 
             if (user == null)

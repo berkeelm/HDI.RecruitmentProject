@@ -13,6 +13,10 @@ namespace Application.Features.Users.Query.Login
         public string Username { get; set; }
         public string Password { get; set; }
 
+        public UsersLoginQuery()
+        {
+        }
+
         public UsersLoginQuery(string username, string password)
         {
             Username = username;
