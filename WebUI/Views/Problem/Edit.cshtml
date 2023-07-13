@@ -1,0 +1,37 @@
+﻿@model Application.Features.Problem.Query.GetById.ProblemGetByIdDto
+@{
+    var warrantyTypes = ViewBag.WarrantyTypeList as List<Application.Features.WarrantyType.Query.GetAll.WarrantyTypeGetAllDto>;
+}
+
+@{
+    ViewData["Title"] = "Arıza Güncelle";
+}
+
+<form method="POST" action="@Url.Action("Edit", "Problem")" enctype="multipart/form-data">
+     <div class="row">
+          <div class="col-md-6 form-group">
+               <label>Arıza Adı</label>
+            @Html.TextBoxFor(x=>x.Name,new {@class="form-control",required=true})
+          </div>
+          <div class="col-md-6 form-group">
+               <label>Garanti Tipi</label>
+
+               <select name="WarrantyTypeId" class="form-control" required>
+                    <option value="">Seçiniz</option>
+
+                @{
+                    foreach (var item in warrantyTypes)
+                    {
+                            <option selected="@(item.Id == Model.WarrantyTypeId)" value="@item.Id">@item.Name</option>
+                    }
+                }
+               </select>
+          </div>
+     </div>
+
+     <div class="mt-3 row">
+          <div class="col-md-12">
+               <button type="submit" class="btn btn-primary">Kaydet</button>
+          </div>
+     </div>
+</form>

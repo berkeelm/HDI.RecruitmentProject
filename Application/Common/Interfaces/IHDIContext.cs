@@ -10,6 +10,7 @@ namespace Application.Common.Interfaces
         DbSet<Customer> Customer { get; set; }
         DbSet<Sale> Sale { get; set; }
         DbSet<WarrantyType> WarrantyType { get; set; }
+        DbSet<Problem> Problem { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         int SaveChanges();

@@ -70,6 +70,47 @@ namespace Infrastructure.Persistence.Migrations.Application
                     b.ToTable("Customer");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Problem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedUserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UpdatedUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WarrantyTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedUserId");
+
+                    b.HasIndex("UpdatedUserId");
+
+                    b.HasIndex("WarrantyTypeId");
+
+                    b.ToTable("Problem");
+                });
+
             modelBuilder.Entity("Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -267,6 +308,29 @@ namespace Infrastructure.Persistence.Migrations.Application
                     b.Navigation("CreatedUser");
 
                     b.Navigation("UpdatedUser");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Problem", b =>
+                {
+                    b.HasOne("Domain.Entities.User", "CreatedUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedUserId");
+
+                    b.HasOne("Domain.Entities.User", "UpdatedUser")
+                        .WithMany()
+                        .HasForeignKey("UpdatedUserId");
+
+                    b.HasOne("Domain.Entities.WarrantyType", "WarrantyType")
+                        .WithMany()
+                        .HasForeignKey("WarrantyTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedUser");
+
+                    b.Navigation("UpdatedUser");
+
+                    b.Navigation("WarrantyType");
                 });
 
             modelBuilder.Entity("Domain.Entities.Product", b =>
