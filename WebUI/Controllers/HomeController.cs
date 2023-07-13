@@ -7,7 +7,7 @@ namespace WebUI.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController(IRequestHelper requestHelper) : base(requestHelper)
+        public HomeController(IRequestHelper requestHelper, IWebHostEnvironment env) : base(requestHelper, env)
         {
         }
 

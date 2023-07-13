@@ -1,10 +1,10 @@
-﻿using Application.Features.Users.Query.Login;
+﻿using Application.Features.User.Query.Login;
 
 namespace Application.Common.Interfaces
 {
     public interface IJwtService
     {
-        UsersLoginDto Generate(int userId);
+        UserLoginDto Generate(int userId);
         int? ValidateJwtToken(string token);
     }
 }

@@ -1,26 +1,26 @@
-﻿using Application.Features.Users.Query.GetAll;
-using Application.Features.Users.Query.Login;
-using Application.Features.Users.Command.Add;
+﻿using Application.Features.User.Query.GetAll;
+using Application.Features.User.Query.Login;
+using Application.Features.User.Command.Add;
 using Microsoft.AspNetCore.Mvc;
 using WebUI.Helpers;
 using WebUI.Interfaces;
 using Domain.Common;
 using MediatR;
-using Application.Features.Users.Query.GetById;
-using Application.Features.Users.Command.Update;
-using Application.Features.Users.Command.Delete;
+using Application.Features.User.Query.GetById;
+using Application.Features.User.Command.Update;
+using Application.Features.User.Command.Delete;
 
 namespace WebUI.Controllers
 {
     public class UserController : BaseController
     {
-        public UserController(IRequestHelper requestHelper) : base(requestHelper)
+        public UserController(IRequestHelper requestHelper, IWebHostEnvironment env) : base(requestHelper, env)
         {
         }
 
         public IActionResult Index()
         {
-            var response = _requestHelper.SendRequest<List<UsersGetAllDto>>("/User/GetAll", new UsersGetAllQuery());
+            var response = _requestHelper.SendRequest<List<UserGetAllDto>>("/User/GetAll", new UserGetAllQuery());
 
             return View(response);
         }
@@ -49,13 +49,13 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var response = _requestHelper.SendRequest<UsersGetByIdDto>("/User/GetById", new UsersGetByIdQuery(id));
+            var response = _requestHelper.SendRequest<UserGetByIdDto>("/User/GetById", new UserGetByIdQuery(id));
 
             return View(response);
         }
 
         [HttpPost]
-        public IActionResult Edit(UsersGetByIdDto model)
+        public IActionResult Edit(UserGetByIdDto model)
         {
             var response = _requestHelper.SendRequest<Response<bool>>("/User/Update", new UserUpdateCommand()
             {

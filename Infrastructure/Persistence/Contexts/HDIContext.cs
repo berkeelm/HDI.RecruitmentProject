@@ -18,6 +18,7 @@ namespace Infrastructure.Persistence.Contexts
     {
         public DbSet<User> User { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<Customer> Customer { get; set; }
 
         public HDIContext(DbContextOptions<HDIContext> options) : base(options)
         {

@@ -8,10 +8,12 @@ namespace WebUI.Controllers
     public class BaseController : Controller
     {
         public IRequestHelper _requestHelper;
+        public IWebHostEnvironment _env;
 
-        public BaseController(IRequestHelper requestHelper)
+        public BaseController(IRequestHelper requestHelper, IWebHostEnvironment env)
         {
             _requestHelper = requestHelper;
+            _env = env;
         }
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)

@@ -1,0 +1,35 @@
+﻿@model Application.Features.Customer.Query.GetById.CustomerGetByIdDto
+
+@{
+    ViewData["Title"] = "Müşteri Güncelle";
+}
+
+<form method="POST" action="@Url.Action("Edit", "Customer")" enctype="multipart/form-data">
+    @Html.HiddenFor(x=>x.Id)
+     <div class="row">
+          <div class="col-md-6 form-group">
+               <label>Ad Soyad</label>
+            @Html.TextBoxFor(x=>x.NameSurname, new {@class="form-control", required=true})
+          </div>
+          <div class="col-md-6 form-group">
+               <label>Adres</label>
+            @Html.TextBoxFor(x=>x.Address, new {@class="form-control", required=true})
+          </div>
+     </div>
+     <div class="mt-3 row">
+          <div class="col-md-6 form-group">
+               <label>Telefon</label>
+            @Html.TextBoxFor(x=>x.Phone, new {@class="form-control", required=true})
+          </div>
+          <div class="col-md-6 form-group">
+               <label>Mail</label>
+            @Html.TextBoxFor(x=>x.Mail, new {@class="form-control", required=true,type="email"})
+          </div>
+     </div>
+
+     <div class="mt-3 row">
+          <div class="col-md-12">
+               <button type="submit" class="btn btn-primary">Kaydet</button>
+          </div>
+     </div>
+</form>

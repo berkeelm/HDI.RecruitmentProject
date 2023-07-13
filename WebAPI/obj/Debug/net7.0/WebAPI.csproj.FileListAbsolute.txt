@@ -10,6 +10,7 @@ C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\bin\Debug\net7
 C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\bin\Debug\net7.0\Humanizer.dll
 C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\bin\Debug\net7.0\MediatR.dll
 C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\bin\Debug\net7.0\MediatR.Contracts.dll
+C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
@@ -82,4 +83,3 @@ C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\obj\Debug\net7
 C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\obj\Debug\net7.0\WebAPI.pdb
 C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\obj\Debug\net7.0\WebAPI.genruntimeconfig.cache
 C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\obj\Debug\net7.0\ref\WebAPI.dll
-C:\Users\Administrator\source\repos\HDI.RecruitmentProject\WebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

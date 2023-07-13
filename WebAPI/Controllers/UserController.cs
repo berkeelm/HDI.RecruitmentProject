@@ -1,9 +1,9 @@
-﻿using Application.Features.Users.Command.Add;
-using Application.Features.Users.Command.Delete;
-using Application.Features.Users.Command.Update;
-using Application.Features.Users.Query.GetAll;
-using Application.Features.Users.Query.GetById;
-using Application.Features.Users.Query.Login;
+﻿using Application.Features.User.Command.Add;
+using Application.Features.User.Command.Delete;
+using Application.Features.User.Command.Update;
+using Application.Features.User.Query.GetAll;
+using Application.Features.User.Query.GetById;
+using Application.Features.User.Query.Login;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,20 +31,20 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("GetAll")]
-        public async Task<IActionResult> GetAllAsync(UsersGetAllQuery query)
+        public async Task<IActionResult> GetAllAsync(UserGetAllQuery query)
         {
             return Ok(await Mediator.Send(query));
         }
 
         [HttpPost("GetById")]
-        public async Task<IActionResult> GetByIdAsync(UsersGetByIdQuery query)
+        public async Task<IActionResult> GetByIdAsync(UserGetByIdQuery query)
         {
             return Ok(await Mediator.Send(query));
         }
 
         [AllowAnonymous]
         [HttpPost("Login")]
-        public async Task<IActionResult> LoginAsync(UsersLoginQuery query)
+        public async Task<IActionResult> LoginAsync(UserLoginQuery query)
         {
             return Ok(await Mediator.Send(query));
         }

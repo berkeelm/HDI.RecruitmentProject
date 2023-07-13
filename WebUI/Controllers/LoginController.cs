@@ -1,4 +1,4 @@
-﻿using Application.Features.Users.Query.Login;
+﻿using Application.Features.User.Query.Login;
 using Microsoft.AspNetCore.Mvc;
 using WebUI.Helpers;
 using WebUI.Interfaces;
@@ -7,20 +7,20 @@ namespace WebUI.Controllers
 {
     public class LoginController : BaseController
     {
-        public LoginController(IRequestHelper requestHelper) : base(requestHelper)
+        public LoginController(IRequestHelper requestHelper, IWebHostEnvironment env) : base(requestHelper, env)
         {
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            return View(new UsersLoginQuery());
+            return View(new UserLoginQuery());
         }
 
         [HttpPost]
-        public IActionResult Index(UsersLoginQuery model)
+        public IActionResult Index(UserLoginQuery model)
         {
-            var response = _requestHelper.SendRequest<UsersLoginDto>("/User/Login", model);
+            var response = _requestHelper.SendRequest<UserLoginDto>("/User/Login", model);
 
             if (response == null)
             {

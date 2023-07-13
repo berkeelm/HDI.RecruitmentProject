@@ -7,6 +7,7 @@ namespace Application.Common.Interfaces
     {
         DbSet<User> User { get; set; }
         DbSet<Product> Product { get; set; }
+        DbSet<Customer> Customer { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         int SaveChanges();

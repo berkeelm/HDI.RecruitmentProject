@@ -249,6 +249,34 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\2742d83b-329f-4033-ab15-260ffad4f6cb.png",
+      "PackagePath": "staticwebassets\\uploads\\2742d83b-329f-4033-ab15-260ffad4f6cb.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\2ddcef2b-e06e-4ba5-9be2-f5f5e9735434.jpg",
+      "PackagePath": "staticwebassets\\uploads\\2ddcef2b-e06e-4ba5-9be2-f5f5e9735434.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\65f066a4-3299-418c-93f8-fb595b95922d.jpg",
+      "PackagePath": "staticwebassets\\uploads\\65f066a4-3299-418c-93f8-fb595b95922d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\6699ba6e-1a52-43a6-bbd7-c5393a3d25c2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\6699ba6e-1a52-43a6-bbd7-c5393a3d25c2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\9d28b6cc-1290-4342-a5bc-3e23cc3c925d.jpg",
+      "PackagePath": "staticwebassets\\uploads\\9d28b6cc-1290-4342-a5bc-3e23cc3c925d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\d652cfc2-a3da-4b3f-bdee-a71d2d381a27.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d652cfc2-a3da-4b3f-bdee-a71d2d381a27.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\e30c0416-7688-42b9-932d-2ae7969ef2ba.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e30c0416-7688-42b9-932d-2ae7969ef2ba.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.WebUI.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

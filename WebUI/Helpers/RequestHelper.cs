@@ -30,8 +30,9 @@ namespace WebUI.Helpers
                   new StringContent(JsonConvert.SerializeObject(_data), Encoding.UTF8, "application/json")
                 );
 
+                var stringResult = res.Result.Content.ReadAsStringAsync().Result;
 
-                var result = JsonConvert.DeserializeObject<T>(res.Result.Content.ReadAsStringAsync().Result);
+                var result = JsonConvert.DeserializeObject<T>(stringResult);
 
                 return result;
             }
