@@ -18,7 +18,7 @@ namespace Infrastructure.Services
             _jwtSettings = jwtSettingsOption.Value;
         }
 
-        public UserLoginDto Generate(int userId)
+        public UserLoginDto Generate(Guid userId)
         {
             var claims = new List<Claim>()
             {
@@ -49,7 +49,7 @@ namespace Infrastructure.Services
             };
         }
 
-        public int? ValidateJwtToken(string? token)
+        public Guid? ValidateJwtToken(string? token)
         {
             if (token == null)
                 return null;
@@ -69,7 +69,7 @@ namespace Infrastructure.Services
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
+                var userId = new Guid(jwtToken.Claims.First(x => x.Type == "id").Value);
 
                 // return user id from JWT token if validation successful
                 return userId;

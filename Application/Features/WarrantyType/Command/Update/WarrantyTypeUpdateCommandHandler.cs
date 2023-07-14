@@ -25,7 +25,7 @@ namespace Application.Features.WarrantyType.Command.Update
                 return new Response<bool>($"Garanti Tipi bulunamadı.", false);
 
             WarrantyType.Name = request.Name;
-            WarrantyType.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
+            WarrantyType.UpdatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"];
             WarrantyType.UpdatedDate = DateTime.Now;
 
             int numberOfUpdated = await _HDIContext.SaveChangesAsync(cancellationToken);

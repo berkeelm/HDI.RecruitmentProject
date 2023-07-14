@@ -48,9 +48,9 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Add(SaleAddCommand model)
         {
-            var response = _requestHelper.SendRequest<Response<int>>("/Sale/Add", model);
+            var response = _requestHelper.SendRequest<Response<Guid>>("/Sale/Add", model);
 
-            if (response.Data == 0)
+            if (response.Data == null)
             {
                 TempData["ErrorMessage"] = response.Message;
                 return View(model);
@@ -61,7 +61,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(Guid id)
         {
             var response = _requestHelper.SendRequest<SaleGetByIdDto>("/Sale/GetById", new SaleGetByIdQuery(id));
 
@@ -90,7 +90,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             var response = _requestHelper.SendRequest<Response<bool>>("/Sale/Delete", new SaleDeleteCommand()
             {
@@ -107,7 +107,7 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
 
-        public JsonResult GetProductPrice(int _productId)
+        public JsonResult GetProductPrice(Guid _productId)
         {
             var response = _requestHelper.SendRequest<ProductGetByIdDto>("/Product/GetById", new ProductGetByIdQuery(_productId));
 

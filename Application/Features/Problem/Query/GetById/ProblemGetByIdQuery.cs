@@ -4,9 +4,9 @@ namespace Application.Features.Problem.Query.GetById
 {
     public class ProblemGetByIdQuery : IRequest<ProblemGetByIdDto>
     {
-        public int ProblemId { get; set; }
+        public Guid ProblemId { get; set; }
 
-        public ProblemGetByIdQuery(int ProblemId)
+        public ProblemGetByIdQuery(Guid ProblemId)
         {
             this.ProblemId = ProblemId;
         }

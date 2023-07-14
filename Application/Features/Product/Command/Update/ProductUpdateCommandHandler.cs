@@ -29,7 +29,7 @@ namespace Application.Features.Product.Command.Update
             Product.Description = request.Description;
             Product.Price = request.Price;
             Product.PhotoPath = request.PhotoPath;
-            Product.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
+            Product.UpdatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"];
             Product.UpdatedDate = DateTime.Now;
 
             int numberOfUpdated = await _HDIContext.SaveChangesAsync(cancellationToken);

@@ -27,7 +27,7 @@ namespace Application.Features.Product.Command.Delete
                 return new Response<bool>($"Ürün bulunamadı.", false);
 
             Product.IsDeleted = true;
-            Product.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
+            Product.UpdatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"];
             Product.UpdatedDate = DateTime.Now;
 
             await _HDIContext.SaveChangesAsync(cancellationToken);

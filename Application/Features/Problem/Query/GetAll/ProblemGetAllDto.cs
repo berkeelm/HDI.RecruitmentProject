@@ -4,9 +4,9 @@ namespace Application.Features.Problem.Query.GetAll
 {
     public class ProblemGetAllDto
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
-        public int WarrantyTypeId { get; set; }
+        public Guid WarrantyTypeId { get; set; }
         public string WarrantyType { get; set; }
         public DateTime CreatedDate { get; set; }
         public string CreatedUser { get; set; }

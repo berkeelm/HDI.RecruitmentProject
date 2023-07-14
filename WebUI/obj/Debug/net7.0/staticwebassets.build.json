@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YdCdKFFclwSyesYWmMCTo5rN90u71WPecRSdyaMMRyQ=",
+  "Hash": "tcgYefqRrjYL3K6a/O8sHrqHblxDDh2B6TlWZflCxBo=",
   "Source": "WebUI",
   "BasePath": "_content/WebUI",
   "Mode": "Default",
@@ -1088,6 +1088,23 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\14055c31-087a-4eaa-b403-9f0297dec924.webp",
+      "SourceId": "WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\",
+      "BasePath": "_content/WebUI",
+      "RelativePath": "uploads/14055c31-087a-4eaa-b403-9f0297dec924.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\14055c31-087a-4eaa-b403-9f0297dec924.webp"
+    },
+    {
       "Identity": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\2742d83b-329f-4033-ab15-260ffad4f6cb.png",
       "SourceId": "WebUI",
       "SourceType": "Discovered",
@@ -1171,6 +1188,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\6699ba6e-1a52-43a6-bbd7-c5393a3d25c2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\7d95d39f-9219-4e1e-b6d8-e0ba68f91156.jpg",
+      "SourceId": "WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\",
+      "BasePath": "_content/WebUI",
+      "RelativePath": "uploads/7d95d39f-9219-4e1e-b6d8-e0ba68f91156.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\7d95d39f-9219-4e1e-b6d8-e0ba68f91156.jpg"
     },
     {
       "Identity": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\7ed16729-014e-4056-aaaa-65915b79839d.jpg",

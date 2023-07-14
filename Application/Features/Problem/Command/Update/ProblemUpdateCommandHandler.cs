@@ -26,7 +26,7 @@ namespace Application.Features.Problem.Command.Update
 
             Problem.Name = request.Name;
             Problem.WarrantyTypeId= request.WarrantyTypeId;
-            Problem.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
+            Problem.UpdatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"];
             Problem.UpdatedDate = DateTime.Now;
 
             int numberOfUpdated = await _HDIContext.SaveChangesAsync(cancellationToken);

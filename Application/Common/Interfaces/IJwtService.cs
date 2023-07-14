@@ -4,7 +4,7 @@ namespace Application.Common.Interfaces
 {
     public interface IJwtService
     {
-        UserLoginDto Generate(int userId);
-        int? ValidateJwtToken(string token);
+        UserLoginDto Generate(Guid userId);
+        Guid? ValidateJwtToken(string token);
     }
 }

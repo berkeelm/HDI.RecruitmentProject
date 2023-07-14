@@ -4,9 +4,9 @@ namespace Application.Features.Customer.Query.GetById
 {
     public class CustomerGetByIdQuery : IRequest<CustomerGetByIdDto>
     {
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
 
-        public CustomerGetByIdQuery(int CustomerId)
+        public CustomerGetByIdQuery(Guid CustomerId)
         {
             this.CustomerId = CustomerId;
         }

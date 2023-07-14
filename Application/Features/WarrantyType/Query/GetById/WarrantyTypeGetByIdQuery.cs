@@ -4,9 +4,9 @@ namespace Application.Features.WarrantyType.Query.GetById
 {
     public class WarrantyTypeGetByIdQuery : IRequest<WarrantyTypeGetByIdDto>
     {
-        public int WarrantyTypeId { get; set; }
+        public Guid WarrantyTypeId { get; set; }
 
-        public WarrantyTypeGetByIdQuery(int WarrantyTypeId)
+        public WarrantyTypeGetByIdQuery(Guid WarrantyTypeId)
         {
             this.WarrantyTypeId = WarrantyTypeId;
         }

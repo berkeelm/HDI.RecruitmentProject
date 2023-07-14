@@ -8,11 +8,11 @@ namespace Domain.Common
 {
     public interface IEntityBase
     {
-        int Id { get; }
+        Guid Id { get; }
         DateTime CreatedDate { get; }
-        int? CreatedUserId { get; }
+        Guid? CreatedUserId { get; }
         DateTime? UpdatedDate { get; }
-        int? UpdatedUserId { get; }
+        Guid? UpdatedUserId { get; }
         bool IsDeleted { get; }
     }
 }

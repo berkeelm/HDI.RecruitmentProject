@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Features.User.Command.Add
 {
-    public class UserAddCommand : IRequest<Response<int>>
+    public class UserAddCommand : IRequest<Response<Guid>>
     {
         public string NameSurname { get; set; }
         public string Email { get; set; }

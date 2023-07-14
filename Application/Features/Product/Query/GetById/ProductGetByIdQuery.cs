@@ -4,9 +4,9 @@ namespace Application.Features.Product.Query.GetById
 {
     public class ProductGetByIdQuery : IRequest<ProductGetByIdDto>
     {
-        public int ProductId { get; set; }
+        public Guid ProductId { get; set; }
 
-        public ProductGetByIdQuery(int ProductId)
+        public ProductGetByIdQuery(Guid ProductId)
         {
             this.ProductId = ProductId;
         }

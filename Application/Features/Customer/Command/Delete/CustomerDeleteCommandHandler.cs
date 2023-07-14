@@ -27,7 +27,7 @@ namespace Application.Features.Customer.Command.Delete
                 return new Response<bool>($"Müşteri bulunamadı.", false);
 
             Customer.IsDeleted = true;
-            Customer.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
+            Customer.UpdatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"];
             Customer.UpdatedDate = DateTime.Now;
 
             await _HDIContext.SaveChangesAsync(cancellationToken);

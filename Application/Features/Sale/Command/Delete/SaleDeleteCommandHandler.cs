@@ -27,7 +27,7 @@ namespace Application.Features.Sale.Command.Delete
                 return new Response<bool>($"Satış bulunamadı.", false);
 
             Sale.IsDeleted = true;
-            Sale.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
+            Sale.UpdatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"];
             Sale.UpdatedDate = DateTime.Now;
 
             await _HDIContext.SaveChangesAsync(cancellationToken);

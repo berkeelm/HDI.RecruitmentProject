@@ -4,9 +4,9 @@ namespace Application.Features.User.Query.GetById
 {
     public class UserGetByIdQuery : IRequest<UserGetByIdDto>
     {
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
 
-        public UserGetByIdQuery(int userId)
+        public UserGetByIdQuery(Guid userId)
         {
             UserId = userId;
         }

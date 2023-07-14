@@ -46,9 +46,9 @@ namespace WebUI.Controllers
                 model.PhotoPath = randomName;
             }
 
-            var response = _requestHelper.SendRequest<Response<int>>("/Product/Add", model);
+            var response = _requestHelper.SendRequest<Response<Guid>>("/Product/Add", model);
 
-            if (response.Data == 0)
+            if (response.Data == null)
             {
                 TempData["ErrorMessage"] = response.Message;
                 return View(model);
@@ -59,7 +59,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(Guid id)
         {
             var response = _requestHelper.SendRequest<ProductGetByIdDto>("/Product/GetById", new ProductGetByIdQuery(id));
 
@@ -103,7 +103,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             var response = _requestHelper.SendRequest<Response<bool>>("/Product/Delete", new ProductDeleteCommand()
             {

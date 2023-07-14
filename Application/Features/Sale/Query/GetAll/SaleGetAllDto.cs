@@ -2,13 +2,13 @@
 {
     public class SaleGetAllDto
     {
-        public int Id { get; set; }
-        public int ProductId { get; set; }
+        public Guid Id { get; set; }
+        public Guid ProductId { get; set; }
         public string Product { get; set; }
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
         public string Customer { get; set; }
         public decimal Price { get; set; }
-        public int RepairChangeCenterUserId { get; set; }
+        public Guid RepairChangeCenterUserId { get; set; }
         public string RepairChangeCenterUser { get; set; }
         public string PhotoPath { get; set; }
         public DateTime CreatedDate { get; set; }

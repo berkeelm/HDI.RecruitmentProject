@@ -29,7 +29,7 @@ namespace Application.Features.Customer.Command.Update
             Customer.Address = request.Address;
             Customer.Phone = request.Phone;
             Customer.Mail = request.Mail;
-            Customer.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
+            Customer.UpdatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"];
             Customer.UpdatedDate = DateTime.Now;
 
             int numberOfUpdated = await _HDIContext.SaveChangesAsync(cancellationToken);

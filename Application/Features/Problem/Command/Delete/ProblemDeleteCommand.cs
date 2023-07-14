@@ -5,6 +5,6 @@ namespace Application.Features.Problem.Command.Delete
 {
     public class ProblemDeleteCommand : IRequest<Response<bool>>
     {
-        public int ProblemId { get; set; }
+        public Guid ProblemId { get; set; }
     }
 }

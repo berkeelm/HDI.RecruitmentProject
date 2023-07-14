@@ -18,7 +18,7 @@ namespace Application.Features.Customer.Query.GetAll
 
         public async Task<List<CustomerGetAllDto>> Handle(CustomerGetAllQuery request, CancellationToken cancellationToken)
         {
-            var currentUser = _HDIContext.User.FirstOrDefault(x => x.Id == (int)_httpContextAccessor.HttpContext.Items["User"]);
+            var currentUser = _HDIContext.User.FirstOrDefault(x => x.Id == (Guid)_httpContextAccessor.HttpContext.Items["User"]);
 
             var dbQuery = _HDIContext.Customer.Include(x => x.CreatedUser).Include(x => x.UpdatedUser).Where(x => !x.IsDeleted);
 

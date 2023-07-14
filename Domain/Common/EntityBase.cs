@@ -8,14 +8,14 @@ namespace Domain.Common
     public abstract class EntityBase : IEntityBase
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public DateTime CreatedDate { get; set; }
 
         [ForeignKey("CreatedUserId")]
-        public int? CreatedUserId { get; set; }
+        public Guid? CreatedUserId { get; set; }
         public DateTime? UpdatedDate { get; set; }
         [ForeignKey("UpdatedUserId")]
-        public int? UpdatedUserId { get; set; }
+        public Guid? UpdatedUserId { get; set; }
         public bool IsDeleted { get; set; } = false;
         [ForeignKey("CreatedUserId")]
         public virtual User? CreatedUser { get; set; }

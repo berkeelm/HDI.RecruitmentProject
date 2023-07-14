@@ -4,9 +4,9 @@ namespace Application.Features.Sale.Query.GetById
 {
     public class SaleGetByIdQuery : IRequest<SaleGetByIdDto>
     {
-        public int SaleId { get; set; }
+        public Guid SaleId { get; set; }
 
-        public SaleGetByIdQuery(int SaleId)
+        public SaleGetByIdQuery(Guid SaleId)
         {
             this.SaleId = SaleId;
         }

@@ -27,7 +27,7 @@ namespace Application.Features.Problem.Command.Delete
                 return new Response<bool>($"Arıza bulunamadı.", false);
 
             Problem.IsDeleted = true;
-            Problem.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
+            Problem.UpdatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"];
             Problem.UpdatedDate = DateTime.Now;
 
             await _HDIContext.SaveChangesAsync(cancellationToken);

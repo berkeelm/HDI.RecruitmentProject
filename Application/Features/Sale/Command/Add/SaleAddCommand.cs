@@ -4,11 +4,11 @@ using MediatR;
 
 namespace Application.Features.Sale.Command.Add
 {
-    public class SaleAddCommand : IRequest<Response<int>>
+    public class SaleAddCommand : IRequest<Response<Guid>>
     {
-        public int CustomerId { get; set; }
-        public int ProductId { get; set; }
+        public Guid CustomerId { get; set; }
+        public Guid ProductId { get; set; }
         public decimal Price { get; set; }
-        public int RepairChangeCenterUserId { get; set; }
+        public Guid RepairChangeCenterUserId { get; set; }
     }
 }

@@ -249,6 +249,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\14055c31-087a-4eaa-b403-9f0297dec924.webp",
+      "PackagePath": "staticwebassets\\uploads\\14055c31-087a-4eaa-b403-9f0297dec924.webp"
+    },
+    {
       "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\2742d83b-329f-4033-ab15-260ffad4f6cb.png",
       "PackagePath": "staticwebassets\\uploads\\2742d83b-329f-4033-ab15-260ffad4f6cb.png"
     },
@@ -267,6 +271,10 @@
     {
       "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\6699ba6e-1a52-43a6-bbd7-c5393a3d25c2.jpg",
       "PackagePath": "staticwebassets\\uploads\\6699ba6e-1a52-43a6-bbd7-c5393a3d25c2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\7d95d39f-9219-4e1e-b6d8-e0ba68f91156.jpg",
+      "PackagePath": "staticwebassets\\uploads\\7d95d39f-9219-4e1e-b6d8-e0ba68f91156.jpg"
     },
     {
       "Id": "C:\\Users\\Administrator\\source\\repos\\HDI.RecruitmentProject\\WebUI\\wwwroot\\uploads\\7ed16729-014e-4056-aaaa-65915b79839d.jpg",

@@ -18,7 +18,7 @@ namespace Application.Features.Sale.Query.GetById
 
         public async Task<SaleGetByIdDto> Handle(SaleGetByIdQuery request, CancellationToken cancellationToken)
         {
-            var currentUser = _HDIContext.User.FirstOrDefault(x => x.Id == (int)_httpContextAccessor.HttpContext.Items["User"]);
+            var currentUser = _HDIContext.User.FirstOrDefault(x => x.Id == (Guid)_httpContextAccessor.HttpContext.Items["User"]);
 
             var dbQuery = _HDIContext.Sale.Include(x => x.CreatedUser).Include(x => x.UpdatedUser).Include(x => x.Product).Include(x => x.Customer).Include(x => x.RepairChangeCenterUser).Where(x => x.Id == request.SaleId && !x.IsDeleted);
 

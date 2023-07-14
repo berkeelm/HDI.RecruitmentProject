@@ -31,9 +31,9 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Add(CustomerAddCommand model)
         {
-            var response = _requestHelper.SendRequest<Response<int>>("/Customer/Add", model);
+            var response = _requestHelper.SendRequest<Response<Guid>>("/Customer/Add", model);
 
-            if (response.Data == 0)
+            if (response.Data == null)
             {
                 TempData["ErrorMessage"] = response.Message;
                 return View(model);
@@ -44,7 +44,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(Guid id)
         {
             var response = _requestHelper.SendRequest<CustomerGetByIdDto>("/Customer/GetById", new CustomerGetByIdQuery(id));
 
@@ -74,7 +74,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             var response = _requestHelper.SendRequest<Response<bool>>("/Customer/Delete", new CustomerDeleteCommand()
             {

@@ -4,7 +4,7 @@ namespace Application.Features.WarrantyType.Query.GetById
 {
     public class WarrantyTypeGetByIdDto
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public DateTime CreatedDate { get; set; }
         public string CreatedUser { get; set; }

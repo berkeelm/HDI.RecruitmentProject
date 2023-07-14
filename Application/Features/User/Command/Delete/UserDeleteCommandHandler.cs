@@ -28,7 +28,7 @@ namespace Application.Features.User.Command.Delete
                 return new Response<bool>($"Kullanıcı bulunamadı.", false);
 
             user.IsDeleted = true;
-            user.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
+            user.UpdatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"];
             user.UpdatedDate = DateTime.Now;
 
             await _HDIContext.SaveChangesAsync(cancellationToken);

@@ -31,9 +31,9 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Add(WarrantyTypeAddCommand model)
         {
-            var response = _requestHelper.SendRequest<Response<int>>("/WarrantyType/Add", model);
+            var response = _requestHelper.SendRequest<Response<Guid>>("/WarrantyType/Add", model);
 
-            if (response.Data == 0)
+            if (response.Data == null)
             {
                 TempData["ErrorMessage"] = response.Message;
                 return View(model);
@@ -44,7 +44,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(Guid id)
         {
             var response = _requestHelper.SendRequest<WarrantyTypeGetByIdDto>("/WarrantyType/GetById", new WarrantyTypeGetByIdQuery(id));
 
@@ -71,7 +71,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             var response = _requestHelper.SendRequest<Response<bool>>("/WarrantyType/Delete", new WarrantyTypeDeleteCommand()
             {

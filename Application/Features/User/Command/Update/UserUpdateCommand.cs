@@ -6,7 +6,7 @@ namespace Application.Features.User.Command.Update
 {
     public class UserUpdateCommand : IRequest<Response<bool>>
     {
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         public string NameSurname { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }

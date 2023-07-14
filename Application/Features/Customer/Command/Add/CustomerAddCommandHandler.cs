@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Application.Features.Customer.Command.Add
 {
-    public class CustomerAddCommandHandler : IRequestHandler<CustomerAddCommand, Response<int>>
+    public class CustomerAddCommandHandler : IRequestHandler<CustomerAddCommand, Response<Guid>>
     {
         private readonly IHDIContext _HDIContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -18,7 +18,7 @@ namespace Application.Features.Customer.Command.Add
             _cryptographyHelper = cryptographyHelper;
         }
 
-        public async Task<Response<int>> Handle(CustomerAddCommand request, CancellationToken cancellationToken)
+        public async Task<Response<Guid>> Handle(CustomerAddCommand request, CancellationToken cancellationToken)
         {
             var Customer = new Domain.Entities.Customer()
             {
@@ -27,14 +27,14 @@ namespace Application.Features.Customer.Command.Add
                 NameSurname = request.NameSurname,
                 Phone = request.Phone,
                 CreatedDate = DateTime.Now,
-                CreatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"],
+                CreatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"],
             };
 
             await _HDIContext.Customer.AddAsync(Customer, cancellationToken);
 
             await _HDIContext.SaveChangesAsync(cancellationToken);
 
-            return new Response<int>($"Müşteri kaydedildi.", Customer.Id);
+            return new Response<Guid>($"Müşteri kaydedildi.", Customer.Id);
         }
     }
 }

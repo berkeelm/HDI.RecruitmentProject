@@ -27,7 +27,7 @@ namespace Application.Features.WarrantyType.Command.Delete
                 return new Response<bool>($"Garanti Tipi bulunamadı.", false);
 
             WarrantyType.IsDeleted = true;
-            WarrantyType.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
+            WarrantyType.UpdatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"];
             WarrantyType.UpdatedDate = DateTime.Now;
 
             await _HDIContext.SaveChangesAsync(cancellationToken);

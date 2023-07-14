@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Application.Features.WarrantyType.Command.Add
 {
-    public class WarrantyTypeAddCommandHandler : IRequestHandler<WarrantyTypeAddCommand, Response<int>>
+    public class WarrantyTypeAddCommandHandler : IRequestHandler<WarrantyTypeAddCommand, Response<Guid>>
     {
         private readonly IHDIContext _HDIContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -18,20 +18,20 @@ namespace Application.Features.WarrantyType.Command.Add
             _cryptographyHelper = cryptographyHelper;
         }
 
-        public async Task<Response<int>> Handle(WarrantyTypeAddCommand request, CancellationToken cancellationToken)
+        public async Task<Response<Guid>> Handle(WarrantyTypeAddCommand request, CancellationToken cancellationToken)
         {
             var WarrantyType = new Domain.Entities.WarrantyType()
             {
                 Name = request.Name,
                 CreatedDate = DateTime.Now,
-                CreatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"],
+                CreatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"],
             };
 
             await _HDIContext.WarrantyType.AddAsync(WarrantyType, cancellationToken);
 
             await _HDIContext.SaveChangesAsync(cancellationToken);
 
-            return new Response<int>($"Garanti Tipi kaydedildi.", WarrantyType.Id);
+            return new Response<Guid>($"Garanti Tipi kaydedildi.", WarrantyType.Id);
         }
     }
 }

@@ -4,9 +4,9 @@ using MediatR;
 
 namespace Application.Features.Problem.Command.Add
 {
-    public class ProblemAddCommand : IRequest<Response<int>>
+    public class ProblemAddCommand : IRequest<Response<Guid>>
     {
         public string Name { get; set; }
-        public int WarrantyTypeId { get; set; }
+        public Guid WarrantyTypeId { get; set; }
     }
 }

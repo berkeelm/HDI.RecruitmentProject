@@ -39,7 +39,7 @@ namespace Application.Features.User.Command.Update
             user.Email = request.Email;
             user.Username = request.Username;
             user.UserType = request.UserType;
-            user.UpdatedUserId = (int)_httpContextAccessor.HttpContext.Items["User"];
+            user.UpdatedUserId = (Guid)_httpContextAccessor.HttpContext.Items["User"];
             user.UpdatedDate = DateTime.Now;
 
             int numberOfUpdated = await _HDIContext.SaveChangesAsync(cancellationToken);

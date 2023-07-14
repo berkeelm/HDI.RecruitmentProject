@@ -11,6 +11,6 @@ namespace Application.Features.User.Command.Delete
 {
     public class UserDeleteCommand : IRequest<Response<bool>>
     {
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
     }
 }

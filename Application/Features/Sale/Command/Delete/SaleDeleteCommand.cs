@@ -5,6 +5,6 @@ namespace Application.Features.Sale.Command.Delete
 {
     public class SaleDeleteCommand : IRequest<Response<bool>>
     {
-        public int SaleId { get; set; }
+        public Guid SaleId { get; set; }
     }
 }
