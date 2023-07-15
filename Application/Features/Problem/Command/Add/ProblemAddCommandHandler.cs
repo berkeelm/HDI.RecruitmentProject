@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Application.Features.Problem.Command.Add
 {
-    public class ProblemAddCommandHandler : IRequestHandler<ProblemAddCommand, Response<Guid>>
+    public class ProblemAddCommandHandler : IRequestHandler<ProblemAddCommand, Response<Guid?>>
     {
         private readonly IHDIContext _HDIContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -18,7 +18,7 @@ namespace Application.Features.Problem.Command.Add
             _cryptographyHelper = cryptographyHelper;
         }
 
-        public async Task<Response<Guid>> Handle(ProblemAddCommand request, CancellationToken cancellationToken)
+        public async Task<Response<Guid?>> Handle(ProblemAddCommand request, CancellationToken cancellationToken)
         {
             var Problem = new Domain.Entities.Problem()
             {
@@ -32,7 +32,7 @@ namespace Application.Features.Problem.Command.Add
 
             await _HDIContext.SaveChangesAsync(cancellationToken);
 
-            return new Response<Guid>($"Arıza kaydedildi.", Problem.Id);
+            return new Response<Guid?>($"Arıza kaydedildi.", Problem.Id);
         }
     }
 }

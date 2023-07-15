@@ -28,6 +28,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -38,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/NotFound404/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90Rm91bmQ0MDRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/Problem/Add.cshtml]
@@ -64,6 +72,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/SaleProblem/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZVByb2JsZW1cQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/SaleWarranty/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZVdhcnJhbnR5XEFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -74,6 +86,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/Sale/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZVxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/Sale/History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZVxIaXN0b3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Administrator/source/repos/HDI.RecruitmentProject/WebUI/Views/Sale/Index.cshtml]

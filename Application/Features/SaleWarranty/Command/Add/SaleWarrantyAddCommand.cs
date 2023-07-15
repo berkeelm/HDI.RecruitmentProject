@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Features.SaleWarranty.Command.Add
 {
-    public class SaleWarrantyAddCommand : IRequest<Response<Guid>>
+    public class SaleWarrantyAddCommand : IRequest<Response<Guid?>>
     {
         public Guid SaleId { get; set; }
         public Guid WarrantyTypeId { get; set; }

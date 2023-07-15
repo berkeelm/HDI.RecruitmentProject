@@ -1,0 +1,73 @@
+﻿@model WebUI.Models.ViewModels.AddSaleProblemViewModel
+
+@{
+    ViewData["Title"] = "Ürün Arızası Ekle";
+}
+
+<div class="mb-5 alert alert-secondary" role="alert">
+     <div class="row">
+          <div class="col-md-2">
+               <img class="img img-thumbnail" style="width: 100%" src="~/uploads/@Model.Sale.PhotoPath" />
+          </div>
+          <div class="col-md-10">
+               Ürün: @Model.Sale.Product<br />
+               Müşteri: @Model.Sale.Customer<br />
+               Değişim & Tamir Merkezi: @Model.Sale.RepairChangeCenterUser<br />
+               Fiyat: @Model.Sale.Price<br />
+               Oluşturulma Tarihi: @Model.Sale.CreatedDate.ToString("dd.MM.yyyy HH:mm")<br />
+               Oluşturan Kullanıcı: @Model.Sale.CreatedUser<br />
+               Garantisi Var Mı?: @(Model.Sale.IsWarrantyActive ? "Evet" : "Hayır")
+          </div>
+     </div>
+</div>
+
+<form method="POST" action="@Url.Action("Add", "SaleProblem")" enctype="multipart/form-data">
+     <input name="SaleId" type="hidden" value="@Model.Sale.Id" />
+
+     <div class="row">
+          <div class="col-md-6 form-group">
+               <label>Arıza</label>
+
+               <select name="ProblemId" class="form-control" required>
+                    <option value="">Seçiniz</option>
+
+                @{
+                    foreach (var item in Model.Problems)
+                    {
+                            <option value="@item.Id">@item.Name</option>
+                    }
+                }
+               </select>
+          </div>
+          <div class="col-md-6 form-group">
+               <label>Fiyat</label>
+
+               <input type="number" name="Price" class="form-control" required />
+          </div>
+     </div>
+
+     <div class="mt-3 row">
+          <div class="col-md-12">
+               <button type="submit" class="btn btn-primary">Kaydet</button>
+          </div>
+     </div>
+</form>
+
+<script>
+     function getProductPrice(_productId) {
+
+         if (_productId == '') {
+             $("#Price").val('');
+             return;
+         }
+
+         $.ajax({
+             url: '@Url.Action("GetProductPrice","Sale")',
+             dataType: 'JSON',
+             data: { _productId: _productId },
+             success: function (data) {
+                 $("#Price").val(data);
+             }
+         });
+     }
+</script>

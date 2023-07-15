@@ -9,9 +9,12 @@ using MediatR;
 using Application.Features.User.Query.GetById;
 using Application.Features.User.Command.Update;
 using Application.Features.User.Command.Delete;
+using WebUI.Filters;
+using Domain.Enums;
 
 namespace WebUI.Controllers
 {
+    [AuthorizationFilter(new UserType[] { UserType.FirmUser })]
     public class UserController : BaseController
     {
         public UserController(IRequestHelper requestHelper, IWebHostEnvironment env) : base(requestHelper, env)

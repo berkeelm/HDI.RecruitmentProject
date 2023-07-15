@@ -1,0 +1,153 @@
+﻿@using Newtonsoft.Json;
+@model WebUI.Models.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<div class="row">
+     <div class="col-md-6">
+          <div class="card">
+               <h5 class="card-header">En Çok Satış Yapan Bayiler</h5>
+               <div class="card-body">
+                    <canvas id="divTopSellingDealers" style="width:100%;max-width:600px"></canvas>
+               </div>
+          </div>
+     </div>
+
+     <div class="col-md-6">
+          <div class="card">
+               <h5 class="card-header">En Çok Tamir Yapan Merkezler</h5>
+               <div class="card-body">
+                    <canvas id="divTopRepairCenters" style="width:100%;max-width:600px"></canvas>
+               </div>
+          </div>
+     </div>
+</div>
+
+<div class="mt-3 row">
+     <div class="col-md-6">
+          <div class="card">
+               <h5 class="card-header">En Çok Satılan Ürünler</h5>
+               <div class="card-body">
+                    <canvas id="divTopSellingProducts" style="width:100%;max-width:600px"></canvas>
+               </div>
+          </div>
+     </div>
+     <div class="col-md-6">
+          <div class="card">
+               <h5 class="card-header">En Çok Arıza Çıkartan Ürünler</h5>
+               <div class="card-body">
+                    <canvas id="divMostProblematicProducts" style="width:100%;max-width:600px"></canvas>
+               </div>
+          </div>
+     </div>
+</div>
+
+<div class="mt-3 row">
+     <div class="col-md-6">
+          <div class="card">
+               <h5 class="card-header">En Çok Çıkan Arızalar</h5>
+               <div class="card-body">
+                    <canvas id="divMostCommonProblems" style="width:100%;max-width:600px"></canvas>
+               </div>
+          </div>
+     </div>
+</div>
+
+<script>
+     var barColors = [
+         "#b91d47",
+         "#00aba9",
+         "#2b5797",
+         "#e8c3b9",
+         "#1e7145"
+     ];
+
+     new Chart("divTopSellingDealers", {
+         type: "pie",
+         data: {
+             labels: @Html.Raw(JsonConvert.SerializeObject( Model.TopSellingDealers.Select(x=>"("+x.Value+")" + " "+x.Key))),
+             datasets: [{
+                 backgroundColor: barColors,
+                 data: @Html.Raw(JsonConvert.SerializeObject( Model.TopSellingDealers.Select(x=>x.Value))),
+             }]
+         },
+         options: {
+             legend: {
+                 display: true,
+                 position: 'right'
+             },
+         }
+     });
+
+     new Chart("divTopRepairCenters", {
+         type: "pie",
+         data: {
+             labels: @Html.Raw(JsonConvert.SerializeObject( Model.TopRepairCenters.Select(x=>"("+x.Value+")" + " "+x.Key))),
+             datasets: [{
+                 backgroundColor: barColors,
+                 data: @Html.Raw(JsonConvert.SerializeObject( Model.TopRepairCenters.Select(x=>x.Value))),
+             }]
+         },
+         options: {
+             legend: {
+                 display: true,
+                 position: 'right'
+             },
+         }
+     });
+
+     new Chart("divTopSellingProducts", {
+         type: "pie",
+         data: {
+             labels: @Html.Raw(JsonConvert.SerializeObject( Model.TopSellingProducts.Select(x=>"("+x.Value+")" + " "+x.Key))),
+             datasets: [{
+                 backgroundColor: barColors,
+                 data: @Html.Raw(JsonConvert.SerializeObject( Model.TopSellingProducts.Select(x=>x.Value))),
+             }]
+         },
+         options: {
+             legend: {
+                 display: true,
+                 position: 'right'
+             },
+         }
+     });
+
+     new Chart("divMostProblematicProducts", {
+         type: "pie",
+         data: {
+             labels: @Html.Raw(JsonConvert.SerializeObject( Model.MostProblematicProducts.Select(x=>"("+x.Value+")" + " "+x.Key))),
+             datasets: [{
+                 backgroundColor: barColors,
+                 data: @Html.Raw(JsonConvert.SerializeObject( Model.MostProblematicProducts.Select(x=>x.Value))),
+             }]
+         },
+         options: {
+             legend: {
+                 display: true,
+                 position: 'right'
+             },
+         }
+     });
+
+     new Chart("divMostCommonProblems", {
+         type: "pie",
+         data: {
+             labels: @Html.Raw(JsonConvert.SerializeObject( Model.MostCommonProblems.Select(x=>"("+x.Value+")" + " "+x.Key))),
+             datasets: [{
+                 backgroundColor: barColors,
+                 data: @Html.Raw(JsonConvert.SerializeObject( Model.MostCommonProblems.Select(x=>x.Value))),
+             }]
+         },
+         options: {
+             legend: {
+                 display: true,
+                 position: 'right'
+             },
+         }
+     });
+</script>

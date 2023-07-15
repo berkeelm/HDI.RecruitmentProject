@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,7 @@ namespace Application.Features.User.Query.Login
     {
         public string Token { get; set; }
         public DateTime Expire { get; set; }
+        public string NameSurname { get; set; }
+        public UserType UserType { get; set; }
     }
 }

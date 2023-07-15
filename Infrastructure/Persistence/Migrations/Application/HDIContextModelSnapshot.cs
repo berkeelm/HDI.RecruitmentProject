@@ -200,6 +200,49 @@ namespace Infrastructure.Persistence.Migrations.Application
                     b.ToTable("Sale");
                 });
 
+            modelBuilder.Entity("Domain.Entities.SaleProblem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatedUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("ProblemId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SaleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("UpdatedUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedUserId");
+
+                    b.HasIndex("ProblemId");
+
+                    b.HasIndex("SaleId");
+
+                    b.HasIndex("UpdatedUserId");
+
+                    b.ToTable("SaleProblem");
+                });
+
             modelBuilder.Entity("Domain.Entities.SaleWarranty", b =>
                 {
                     b.Property<Guid>("Id")
@@ -421,6 +464,37 @@ namespace Infrastructure.Persistence.Migrations.Application
                     b.Navigation("UpdatedUser");
                 });
 
+            modelBuilder.Entity("Domain.Entities.SaleProblem", b =>
+                {
+                    b.HasOne("Domain.Entities.User", "CreatedUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedUserId");
+
+                    b.HasOne("Domain.Entities.Problem", "Problem")
+                        .WithMany()
+                        .HasForeignKey("ProblemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Sale", "Sale")
+                        .WithMany()
+                        .HasForeignKey("SaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.User", "UpdatedUser")
+                        .WithMany()
+                        .HasForeignKey("UpdatedUserId");
+
+                    b.Navigation("CreatedUser");
+
+                    b.Navigation("Problem");
+
+                    b.Navigation("Sale");
+
+                    b.Navigation("UpdatedUser");
+                });
+
             modelBuilder.Entity("Domain.Entities.SaleWarranty", b =>
                 {
                     b.HasOne("Domain.Entities.User", "CreatedUser")
@@ -428,7 +502,7 @@ namespace Infrastructure.Persistence.Migrations.Application
                         .HasForeignKey("CreatedUserId");
 
                     b.HasOne("Domain.Entities.Sale", "Sale")
-                        .WithMany()
+                        .WithMany("SaleWarranty")
                         .HasForeignKey("SaleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -480,6 +554,11 @@ namespace Infrastructure.Persistence.Migrations.Application
                     b.Navigation("CreatedUser");
 
                     b.Navigation("UpdatedUser");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Sale", b =>
+                {
+                    b.Navigation("SaleWarranty");
                 });
 #pragma warning restore 612, 618
         }

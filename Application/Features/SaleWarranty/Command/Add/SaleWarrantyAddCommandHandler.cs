@@ -2,10 +2,11 @@
 using Domain.Common;
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.SaleWarranty.Command.Add
 {
-    public class SaleWarrantyAddCommandHandler : IRequestHandler<SaleWarrantyAddCommand, Response<Guid>>
+    public class SaleWarrantyAddCommandHandler : IRequestHandler<SaleWarrantyAddCommand, Response<Guid?>>
     {
         private readonly IHDIContext _HDIContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -18,8 +19,15 @@ namespace Application.Features.SaleWarranty.Command.Add
             _cryptographyHelper = cryptographyHelper;
         }
 
-        public async Task<Response<Guid>> Handle(SaleWarrantyAddCommand request, CancellationToken cancellationToken)
+        public async Task<Response<Guid?>> Handle(SaleWarrantyAddCommand request, CancellationToken cancellationToken)
         {
+            var control = await _HDIContext.SaleWarranty.FirstOrDefaultAsync(x => x.SaleId == request.SaleId && DateTime.Now >= x.StartDate && DateTime.Now <= x.EndDate && !x.IsDeleted);
+
+            if (control != null)
+            {
+                return new Response<Guid?>($"Ürünün zaten aktif bir garantisi bulunmaktadır.", (Guid?)null);
+            }
+
             var SaleWarranty = new Domain.Entities.SaleWarranty()
             {
                 CreatedDate = DateTime.Now,
@@ -34,7 +42,7 @@ namespace Application.Features.SaleWarranty.Command.Add
 
             await _HDIContext.SaveChangesAsync(cancellationToken);
 
-            return new Response<Guid>($"Garanti kaydedildi.", SaleWarranty.Id);
+            return new Response<Guid?>($"Garanti kaydedildi.", SaleWarranty.Id);
         }
     }
 }

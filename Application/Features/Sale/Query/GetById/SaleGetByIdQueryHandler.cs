@@ -20,13 +20,20 @@ namespace Application.Features.Sale.Query.GetById
         {
             var currentUser = _HDIContext.User.FirstOrDefault(x => x.Id == (Guid)_httpContextAccessor.HttpContext.Items["User"]);
 
-            var dbQuery = _HDIContext.Sale.Include(x => x.CreatedUser).Include(x => x.UpdatedUser).Include(x => x.Product).Include(x => x.Customer).Include(x => x.RepairChangeCenterUser).Where(x => x.Id == request.SaleId && !x.IsDeleted);
+            var dbQuery = _HDIContext.Sale.Include(x => x.CreatedUser).Include(x => x.UpdatedUser).Include(x => x.Product).Include(x => x.Customer).Include(x => x.RepairChangeCenterUser).Include(x => x.SaleWarranty).Where(x => x.Id == request.SaleId && !x.IsDeleted);
 
             // Eğer bayi login oluyorsa sadece kendi satışlarını görür
 
             if (currentUser.UserType == Domain.Enums.UserType.DealerUser)
             {
                 dbQuery = dbQuery.Where(x => x.CreatedUserId == currentUser.Id);
+            }
+
+            // Eğer teknik servis login oluyorsa sadece kendi satışlarını görür
+
+            if (currentUser.UserType == Domain.Enums.UserType.RepairChangeCenterUser)
+            {
+                dbQuery = dbQuery.Where(x => x.RepairChangeCenterUserId == currentUser.Id);
             }
 
             var Sale = await dbQuery.FirstOrDefaultAsync(cancellationToken);
@@ -49,6 +56,7 @@ namespace Application.Features.Sale.Query.GetById
                 PhotoPath = Sale.Product.PhotoPath,
                 RepairChangeCenterUser = Sale.RepairChangeCenterUser.NameSurname,
                 RepairChangeCenterUserId = Sale.RepairChangeCenterUserId,
+                IsWarrantyActive = Sale.SaleWarranty.Any(x => DateTime.Now >= x.StartDate && DateTime.Now <= x.EndDate && !x.IsDeleted)
             };
 
             return SaleDto;

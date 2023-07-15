@@ -24,6 +24,11 @@ namespace Application.Features.SaleWarranty.Query.GetAll
                                                   .Include(x => x.WarrantyType)
                                                   .Where(x => !x.IsDeleted);
 
+            if (request.SaleId.HasValue)
+            {
+                dbQuery = dbQuery.Where(x => x.SaleId == request.SaleId);
+            }
+
             var SaleWarrantys = await dbQuery.ToListAsync(cancellationToken);
 
             var SaleWarrantysDto = SaleWarrantys.Select(x => new SaleWarrantyGetAllDto()

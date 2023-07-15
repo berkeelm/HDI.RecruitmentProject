@@ -21,5 +21,6 @@ namespace Application.Features.Sale.Query.GetById
         public string CreatedUser { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public string UpdatedUser { get; set; }
+        public bool IsWarrantyActive { get; set; }
     }
 }

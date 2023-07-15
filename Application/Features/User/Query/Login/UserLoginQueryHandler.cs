@@ -24,7 +24,7 @@ namespace Application.Features.User.Query.Login
             if (user == null)
                 return null;
 
-            return _jwtService.Generate(user.Id);
+            return _jwtService.Generate(user);
         }
     }
 }

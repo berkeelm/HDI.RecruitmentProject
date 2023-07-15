@@ -1,4 +1,5 @@
-﻿using Application.Features.User.Query.Login;
+﻿using Application.Features.User.Query.GetById;
+using Application.Features.User.Query.Login;
 using Microsoft.AspNetCore.Mvc;
 using WebUI.Helpers;
 using WebUI.Interfaces;
@@ -31,6 +32,8 @@ namespace WebUI.Controllers
             CookieOptions options = new CookieOptions();
             options.Expires = response.Expire;
             Response.Cookies.Append("auth_token", response.Token, options);
+            Response.Cookies.Append("user_info", response.NameSurname, options);
+            Response.Cookies.Append("user_type", Convert.ToInt32(response.UserType).ToString(), options);
 
             return RedirectToAction("Index", "Home");
         }

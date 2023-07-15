@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Application.Features.Product.Command.Add
 {
-    public class ProductAddCommandHandler : IRequestHandler<ProductAddCommand, Response<Guid>>
+    public class ProductAddCommandHandler : IRequestHandler<ProductAddCommand, Response<Guid?>>
     {
         private readonly IHDIContext _HDIContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -18,7 +18,7 @@ namespace Application.Features.Product.Command.Add
             _cryptographyHelper = cryptographyHelper;
         }
 
-        public async Task<Response<Guid>> Handle(ProductAddCommand request, CancellationToken cancellationToken)
+        public async Task<Response<Guid?>> Handle(ProductAddCommand request, CancellationToken cancellationToken)
         {
             var Product = new Domain.Entities.Product()
             {
@@ -34,7 +34,7 @@ namespace Application.Features.Product.Command.Add
 
             await _HDIContext.SaveChangesAsync(cancellationToken);
 
-            return new Response<Guid>($"Ürün kaydedildi.", Product.Id);
+            return new Response<Guid?>($"Ürün kaydedildi.", Product.Id);
         }
     }
 }

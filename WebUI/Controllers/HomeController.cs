@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Domain.Common;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Diagnostics;
 using WebUI.Interfaces;
 using WebUI.Models;
@@ -14,6 +16,14 @@ namespace WebUI.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("auth_token");
+            Response.Cookies.Delete("user_info");
+            Response.Cookies.Delete("user_type");
+            return RedirectToAction("Index");
         }
     }
 }

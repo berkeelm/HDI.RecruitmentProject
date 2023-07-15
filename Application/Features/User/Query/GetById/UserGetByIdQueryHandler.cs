@@ -1,5 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.User.Query.GetById
@@ -7,15 +8,29 @@ namespace Application.Features.User.Query.GetById
     public class UserGetByIdQueryHandler : IRequestHandler<UserGetByIdQuery, UserGetByIdDto>
     {
         private readonly IHDIContext _HDIContext;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserGetByIdQueryHandler(IHDIContext HDIContext)
+        public UserGetByIdQueryHandler(IHDIContext HDIContext, IHttpContextAccessor httpContextAccessor)
         {
             _HDIContext = HDIContext;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<UserGetByIdDto> Handle(UserGetByIdQuery request, CancellationToken cancellationToken)
         {
-            var user = await _HDIContext.User.Include(x => x.CreatedUser).Include(x => x.UpdatedUser).FirstOrDefaultAsync(x => x.Id == request.UserId && !x.IsDeleted);
+            var dbQuery = _HDIContext.User.Include(x => x.CreatedUser).Include(x => x.UpdatedUser).Where(x => !x.IsDeleted);
+
+            if (request.UserId.HasValue)
+            {
+                dbQuery = dbQuery.Where(x => x.Id == request.UserId.GetValueOrDefault());
+            }
+            else
+            {
+                dbQuery = dbQuery.Where(x => x.Id == (Guid)_httpContextAccessor.HttpContext.Items["User"]);
+            }
+
+
+            var user = await dbQuery.FirstOrDefaultAsync(cancellationToken);
 
             if (user == null)
                 return null;

@@ -23,11 +23,21 @@ namespace WebUI.Controllers
         {
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string ProductName, string CustomerName, string RepairChangeCenterName, DateTime? CreatedDate, string CreatedUser)
         {
-            var response = _requestHelper.SendRequest<List<SaleGetAllDto>>("/Sale/GetAll", new SaleGetAllQuery());
+            var saleList = _requestHelper.SendRequest<List<SaleGetAllDto>>("/Sale/GetAll", new SaleGetAllQuery(ProductName, CustomerName, RepairChangeCenterName, CreatedDate, CreatedUser));
 
-            return View(response);
+            var viewModel = new SaleListViewModel()
+            {
+                ProductName = ProductName,
+                SaleList = saleList,
+                CustomerName = CustomerName,
+                RepairChangeCenterName = RepairChangeCenterName,
+                CreatedDate = CreatedDate,
+                CreatedUser = CreatedUser
+            };
+
+            return View(viewModel);
         }
 
         [HttpGet]

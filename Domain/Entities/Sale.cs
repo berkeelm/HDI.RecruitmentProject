@@ -16,5 +16,6 @@ namespace Domain.Entities
         public decimal Price { get; set; }
         public Guid RepairChangeCenterUserId { get; set; }
         public virtual User RepairChangeCenterUser { get; set; }
+        public virtual List<SaleWarranty> SaleWarranty { get; set; }
     }
 }

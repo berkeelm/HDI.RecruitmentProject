@@ -1,5 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Application.Features.User.Query.Login;
+using Domain.Entities;
 using Domain.Settings;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -18,11 +19,11 @@ namespace Infrastructure.Services
             _jwtSettings = jwtSettingsOption.Value;
         }
 
-        public UserLoginDto Generate(Guid userId)
+        public UserLoginDto Generate(User user)
         {
             var claims = new List<Claim>()
             {
-                new Claim("id", userId.ToString()),
+                new Claim("id", user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
             };
 
@@ -45,7 +46,9 @@ namespace Infrastructure.Services
             return new UserLoginDto()
             {
                 Expire = expiry,
-                Token = accessToken
+                Token = accessToken,
+                NameSurname = user.NameSurname,
+                UserType = user.UserType
             };
         }
 
