@@ -1,5 +1,5 @@
 # HDI.RecruitmentProject
-Bir firmanın kullanıcı, ürün, arıza, garanti tipi gibi sabitleri tanımlayıp, bayilerin sistemi kullanarak satış yapabildiği, garanti tanımlayabildiği ve değişim & tamir merkezi atayabildi, değişim & tamir merkezlerinin de sisteme girip değişen parçaları, fiyatlarını girdiği ve en sonunda firmanın bunu dashboard üzerinden özet olarak gördüğü bir sistemdir.
+Bir firmanın kullanıcı, ürün, arıza, garanti tipi gibi sabitleri tanımlayıp, bayilerin sistemi kullanarak satış yapabildiği, garanti tanımlayabildiği ve değişim & tamir merkezi atayabildiği, değişim & tamir merkezlerinin de sisteme girip değişen parçaları, fiyatlarını girdiği ve en sonunda firmanın bunu dashboard üzerinden özet olarak gördüğü bir sistemdir.
 
 Projede Kullanılan Teknolojiler
 - .Net Core 7
@@ -17,6 +17,10 @@ Sistemde 3 rol mevcuttur;
 
 Tüm sayfalar rollere göre bir AuthorizationFilter kullanılarak erişime kısıtlanmıştır, ortak sayfalarda da aksiyonlar rol bazlı kısıtlanmıştır.
 
+# Veritabanı Yapısı
+![image](https://github.com/berkeelm/HDI.RecruitmentProject/assets/48200058/ef2bd1a3-b096-4495-81de-3a196a5633c1)
+
+
 # Login
 ![image](https://github.com/berkeelm/HDI.RecruitmentProject/assets/48200058/654dfafb-51be-47cd-bac2-9dd7c79d2ebc)
 
@@ -24,7 +28,7 @@ Tüm sayfalar rollere göre bir AuthorizationFilter kullanılarak erişime kıs�
 ![image](https://github.com/berkeelm/HDI.RecruitmentProject/assets/48200058/da5d40f4-c11c-4bc2-8c77-7a288addd23d)
 
 # Kullanıcı Listesi (Firma)
-![image](https://github.com/berkeelm/HDI.RecruitmentProject/assets/48200058/f66e59dd-da62-4e56-9373-c674ff97c5b7)
+![image](https://github.com/berkeelm/HDI.RecruitmentProject/assets/48200058/14315fb7-b4fc-463e-99bf-e9b709d9c572)
 
 # Kullanıcı Ekle (Firma)
 ![image](https://github.com/berkeelm/HDI.RecruitmentProject/assets/48200058/eafc6b2a-d238-4d91-9fd7-14638a255991)
