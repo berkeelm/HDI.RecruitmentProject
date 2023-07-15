@@ -21,13 +21,13 @@ Tüm sayfalar rollere göre bir AuthorizationFilter kullanılarak erişime kıs�
 # Veritabanı Yapısı
 ![image](https://github.com/berkeelm/HDI.RecruitmentProject/assets/48200058/ef2bd1a3-b096-4495-81de-3a196a5633c1)
 
+# Login
+![image](https://github.com/berkeelm/HDI.RecruitmentProject/assets/48200058/654dfafb-51be-47cd-bac2-9dd7c79d2ebc)
+
 # Canlı Loglar (Firma)
 ![image](https://github.com/berkeelm/HDI.RecruitmentProject/assets/48200058/1dde87fc-5797-45e3-92a0-bd35cbee1061)
 
 Bu sayfada firma yetkilileri anlık olarak sistemde yapılan işlemleri görüntülerler.
-
-# Login
-![image](https://github.com/berkeelm/HDI.RecruitmentProject/assets/48200058/654dfafb-51be-47cd-bac2-9dd7c79d2ebc)
 
 # Dashboard (Firma)
 ![image](https://github.com/berkeelm/HDI.RecruitmentProject/assets/48200058/da5d40f4-c11c-4bc2-8c77-7a288addd23d)
