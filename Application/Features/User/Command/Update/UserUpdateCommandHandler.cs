@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Common.Helpers;
+using Application.Common.Interfaces;
 using Domain.Common;
 using Domain.Entities;
 using MediatR;
@@ -11,15 +12,19 @@ namespace Application.Features.User.Command.Update
     {
         private readonly IHDIContext _HDIContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ISignalRHelper _signalRHelper;
 
-        public UserUpdateCommandHandler(IHDIContext HDIContext, IHttpContextAccessor httpContextAccessor)
+        public UserUpdateCommandHandler(IHDIContext HDIContext, IHttpContextAccessor httpContextAccessor, ISignalRHelper signalRHelper)
         {
             _HDIContext = HDIContext;
             _httpContextAccessor = httpContextAccessor;
+            _signalRHelper = signalRHelper;
         }
 
         public async Task<Response<bool>> Handle(UserUpdateCommand request, CancellationToken cancellationToken)
         {
+            var currentUser = _HDIContext.User.FirstOrDefault(x => x.Id == (Guid)_httpContextAccessor.HttpContext.Items["User"]);
+
             var control = await _HDIContext.User.FirstOrDefaultAsync(x => x.Id != request.UserId && x.Username == request.Username && !x.IsDeleted);
 
             if (control != null)
@@ -44,8 +49,12 @@ namespace Application.Features.User.Command.Update
 
             int numberOfUpdated = await _HDIContext.SaveChangesAsync(cancellationToken);
 
+
             if (numberOfUpdated > 0)
+            {
+                await _signalRHelper.SendLog($"[{DateTime.Now.ToString("dd.MM.yyyy HH:mm")}] {currentUser.NameSurname} isimli kullanıcı {user.NameSurname} isimli kullanıcıyı güncelledi.");
                 return new Response<bool>($"Kullanıcı güncellendi.", true);
+            }
 
             return new Response<bool>($"Kullanıcı güncellenirken bir hata oluştu.", false);
         }

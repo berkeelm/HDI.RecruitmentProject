@@ -72,6 +72,7 @@ builder.Services.AddAuthentication(options =>
        });
 
 builder.Services.AddScoped<ICryptographyHelper, CryptographyHelper>();
+builder.Services.AddScoped<ISignalRHelper, SignalRHelper>();
 
 var app = builder.Build();
 

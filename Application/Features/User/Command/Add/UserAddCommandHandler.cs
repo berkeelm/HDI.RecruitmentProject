@@ -12,16 +12,20 @@ namespace Application.Features.User.Command.Add
         private readonly IHDIContext _HDIContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ICryptographyHelper _cryptographyHelper;
+        private readonly ISignalRHelper _signalRHelper;
 
-        public UserAddCommandHandler(IHDIContext HDIContext, IHttpContextAccessor httpContextAccessor, ICryptographyHelper cryptographyHelper)
+        public UserAddCommandHandler(IHDIContext HDIContext, IHttpContextAccessor httpContextAccessor, ICryptographyHelper cryptographyHelper, ISignalRHelper signalRHelper)
         {
             _HDIContext = HDIContext;
             _httpContextAccessor = httpContextAccessor;
             _cryptographyHelper = cryptographyHelper;
+            _signalRHelper = signalRHelper;
         }
 
         public async Task<Response<Guid?>> Handle(UserAddCommand request, CancellationToken cancellationToken)
         {
+            var currentUser = _HDIContext.User.FirstOrDefault(x => x.Id == (Guid)_httpContextAccessor.HttpContext.Items["User"]);
+
             var control = await _HDIContext.User.FirstOrDefaultAsync(x => x.Username == request.Username && !x.IsDeleted);
 
             if (control != null)
@@ -45,7 +49,10 @@ namespace Application.Features.User.Command.Add
 
             await _HDIContext.User.AddAsync(user, cancellationToken);
 
+
             await _HDIContext.SaveChangesAsync(cancellationToken);
+
+            await _signalRHelper.SendLog($"[{DateTime.Now.ToString("dd.MM.yyyy HH:mm")}] {currentUser.NameSurname} isimli kullanıcı {user.NameSurname} isimli kullanıcıyı ekledi.");
 
             return new Response<Guid?>($"Kullanıcı kaydedildi.", user.Id);
         }

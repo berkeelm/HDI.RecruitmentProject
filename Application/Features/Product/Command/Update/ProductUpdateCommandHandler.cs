@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Common.Helpers;
+using Application.Common.Interfaces;
 using Domain.Common;
 using Domain.Entities;
 using MediatR;
@@ -11,15 +12,19 @@ namespace Application.Features.Product.Command.Update
     {
         private readonly IHDIContext _HDIContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ISignalRHelper _signalRHelper;
 
-        public ProductUpdateCommandHandler(IHDIContext HDIContext, IHttpContextAccessor httpContextAccessor)
+        public ProductUpdateCommandHandler(IHDIContext HDIContext, IHttpContextAccessor httpContextAccessor, ISignalRHelper signalRHelper)
         {
             _HDIContext = HDIContext;
             _httpContextAccessor = httpContextAccessor;
+            _signalRHelper = signalRHelper;
         }
 
         public async Task<Response<bool>> Handle(ProductUpdateCommand request, CancellationToken cancellationToken)
         {
+            var currentUser = _HDIContext.User.FirstOrDefault(x => x.Id == (Guid)_httpContextAccessor.HttpContext.Items["User"]);
+
             var Product = await _HDIContext.Product.FirstOrDefaultAsync(x => x.Id == request.ProductId && !x.IsDeleted);
 
             if (Product == null)
@@ -35,7 +40,10 @@ namespace Application.Features.Product.Command.Update
             int numberOfUpdated = await _HDIContext.SaveChangesAsync(cancellationToken);
 
             if (numberOfUpdated > 0)
+            {
+                await _signalRHelper.SendLog($"[{DateTime.Now.ToString("dd.MM.yyyy HH:mm")}] {currentUser.NameSurname} isimli kullanıcı {Product.Name} isimli ürünü güncelledi.");
                 return new Response<bool>($"Ürün güncellendi.", true);
+            }
 
             return new Response<bool>($"Ürün güncellenirken bir hata oluştu.", false);
         }

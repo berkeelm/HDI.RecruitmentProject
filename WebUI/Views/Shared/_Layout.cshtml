@@ -146,6 +146,17 @@
                                         </ul>
                                    </div>
                               </li>
+
+                        @{
+                            if (ViewBag.UserType == UserType.FirmUser)
+                            {
+                                      <li>
+                                           <a href="@Url.Action("Index", "Log")" class="btn" id="dropdownMenuButton2">
+                                                Canlı Loglar
+                                           </a>
+                                      </li>
+                            }
+                        }
                          </ul>
                          <div>
                               <span style="margin-right: 15px;">

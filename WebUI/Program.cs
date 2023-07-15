@@ -1,6 +1,7 @@
 using Application.Common.Helpers;
 using Application.Common.Interfaces;
 using WebUI.Helpers;
+using WebUI.Hubs;
 using WebUI.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IRequestHelper, RequestHelper>();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -27,6 +29,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapHub<LogHub>("/LogHub");
 
 app.MapControllerRoute(
     name: "default",
