@@ -6,6 +6,8 @@ using Application.Features.Sale.Command.Delete;
 using Application.Features.Sale.Command.Update;
 using Application.Features.Sale.Query.GetAll;
 using Application.Features.Sale.Query.GetById;
+using Application.Features.SaleProblem.Query.GetAll;
+using Application.Features.SaleWarranty.Query.GetAll;
 using Application.Features.User.Query.GetAll;
 using Domain.Common;
 using Domain.Enums;
@@ -48,7 +50,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Add(SaleAddCommand model)
         {
-            var response = _requestHelper.SendRequest<Response<Guid>>("/Sale/Add", model);
+            var response = _requestHelper.SendRequest<Response<Guid?>>("/Sale/Add", model);
 
             if (response.Data == null)
             {
@@ -112,6 +114,25 @@ namespace WebUI.Controllers
             var response = _requestHelper.SendRequest<ProductGetByIdDto>("/Product/GetById", new ProductGetByIdQuery(_productId));
 
             return Json(response.Price);
+        }
+
+        [HttpGet]
+        public IActionResult History(Guid id)
+        {
+            var Sale = _requestHelper.SendRequest<SaleGetByIdDto>("/Sale/GetById", new SaleGetByIdQuery(id));
+            var saleWarranties = _requestHelper.SendRequest<List<SaleWarrantyGetAllDto>>("/SaleWarranty/GetAll", new SaleWarrantyGetAllQuery(id));
+            var saleProblems = _requestHelper.SendRequest<List<SaleProblemGetAllDto>>("/SaleProblem/GetAll", new SaleProblemGetAllQuery(id));
+            //garanti history
+            //arıza geçmişi
+
+            var viewModel = new SaleHistoryViewModel()
+            {
+                Sale = Sale,
+                SaleWarranties = saleWarranties,
+                SaleProblems = saleProblems
+            };
+
+            return View(viewModel);
         }
     }
 }

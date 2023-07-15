@@ -46,7 +46,7 @@ namespace WebUI.Controllers
                 model.PhotoPath = randomName;
             }
 
-            var response = _requestHelper.SendRequest<Response<Guid>>("/Product/Add", model);
+            var response = _requestHelper.SendRequest<Response<Guid?>>("/Product/Add", model);
 
             if (response.Data == null)
             {

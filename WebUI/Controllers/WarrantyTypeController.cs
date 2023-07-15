@@ -31,7 +31,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Add(WarrantyTypeAddCommand model)
         {
-            var response = _requestHelper.SendRequest<Response<Guid>>("/WarrantyType/Add", model);
+            var response = _requestHelper.SendRequest<Response<Guid?>>("/WarrantyType/Add", model);
 
             if (response.Data == null)
             {

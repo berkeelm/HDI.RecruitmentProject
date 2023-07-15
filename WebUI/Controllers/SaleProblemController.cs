@@ -1,9 +1,8 @@
-﻿using Application.Features.Sale.Query.GetById;
-using Application.Features.SaleWarranty.Command.Add;
-using Application.Features.SaleWarranty.Command.Delete;
-using Application.Features.SaleWarranty.Command.Update;
-using Application.Features.SaleWarranty.Query.GetAll;
-using Application.Features.SaleWarranty.Query.GetById;
+﻿using Application.Features.Problem.Query.GetAll;
+using Application.Features.Sale.Query.GetById;
+using Application.Features.SaleProblem.Command.Add;
+using Application.Features.SaleProblem.Command.Delete;
+using Application.Features.SaleProblem.Query.GetAll;
 using Application.Features.WarrantyType.Query.GetAll;
 using Domain.Common;
 using Microsoft.AspNetCore.Mvc;
@@ -12,15 +11,15 @@ using WebUI.Models.ViewModels;
 
 namespace WebUI.Controllers
 {
-    public class SaleWarrantyController : BaseController
+    public class SaleProblemController : BaseController
     {
-        public SaleWarrantyController(IRequestHelper requestHelper, IWebHostEnvironment env) : base(requestHelper, env)
+        public SaleProblemController(IRequestHelper requestHelper, IWebHostEnvironment env) : base(requestHelper, env)
         {
         }
 
         public IActionResult Index()
         {
-            var response = _requestHelper.SendRequest<List<SaleWarrantyGetAllDto>>("/SaleWarranty/GetAll", new SaleWarrantyGetAllQuery());
+            var response = _requestHelper.SendRequest<List<SaleProblemGetAllDto>>("/SaleProblem/GetAll", new SaleProblemGetAllQuery());
 
             return View(response);
         }
@@ -29,21 +28,21 @@ namespace WebUI.Controllers
         public IActionResult Add(Guid id)
         {
             var Sale = _requestHelper.SendRequest<SaleGetByIdDto>("/Sale/GetById", new SaleGetByIdQuery(id));
-            var warrantyTypeList = _requestHelper.SendRequest<List<WarrantyTypeGetAllDto>>("/WarrantyType/GetAll", new WarrantyTypeGetAllQuery());
+            var ProblemList = _requestHelper.SendRequest<List<ProblemGetAllDto>>("/Problem/GetAll", new ProblemGetAllQuery(id));
 
-            var model = new AddSaleWarrantyViewModel()
+            var model = new AddSaleProblemViewModel()
             {
                 Sale = Sale,
-                WarrantyTypes = warrantyTypeList
+                Problems = ProblemList
             };
 
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Add(SaleWarrantyAddCommand model)
+        public IActionResult Add(SaleProblemAddCommand model)
         {
-            var response = _requestHelper.SendRequest<Response<Guid?>>("/SaleWarranty/Add", model);
+            var response = _requestHelper.SendRequest<Response<Guid?>>("/SaleProblem/Add", model);
 
             if (response.Data == null)
             {
@@ -58,9 +57,9 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Delete(Guid id, Guid saleId)
         {
-            var response = _requestHelper.SendRequest<Response<bool>>("/SaleWarranty/Delete", new SaleWarrantyDeleteCommand()
+            var response = _requestHelper.SendRequest<Response<bool>>("/SaleProblem/Delete", new SaleProblemDeleteCommand()
             {
-                SaleWarrantyId = id
+                SaleProblemId = id
             });
 
             if (response.Data == false)

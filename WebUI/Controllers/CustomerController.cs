@@ -31,7 +31,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Add(CustomerAddCommand model)
         {
-            var response = _requestHelper.SendRequest<Response<Guid>>("/Customer/Add", model);
+            var response = _requestHelper.SendRequest<Response<Guid?>>("/Customer/Add", model);
 
             if (response.Data == null)
             {

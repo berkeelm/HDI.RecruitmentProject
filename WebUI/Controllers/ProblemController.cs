@@ -34,7 +34,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Add(ProblemAddCommand model)
         {
-            var response = _requestHelper.SendRequest<Response<Guid>>("/Problem/Add", model);
+            var response = _requestHelper.SendRequest<Response<Guid?>>("/Problem/Add", model);
 
             if (response.Data == null)
             {
